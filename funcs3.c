@@ -33,13 +33,18 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
+	stack_t *current = NULL;
+	int mul = 0;
+
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
+	current = *stack;
 
-	(*stack)->next->n *= (*stack)->n;
+	mul = current->next->n * current->n;
+	current->next->n = mul;
 	_pop(stack, line_number);
 }
 /**
