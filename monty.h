@@ -55,10 +55,6 @@ void stack_node(stack_t **stack, stack_t *item);
 /* Free Double linked list */
 void free_dlistint(stack_t *stack);
 
-/* Own strtok */
-char **_strtok(char *line);
-char *strcp(char *str);
-
 /*Helpers*/
 int _isdigit(char *c);
 
@@ -67,4 +63,4 @@ void handle_error(unsigned int line_number, char *op, int err);
 void push_error(FILE *fd, char *line, stack_t *stack, int count);
 void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
 
-#endif
+#endif /*HOLBERTON*/
