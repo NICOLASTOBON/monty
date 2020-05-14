@@ -43,9 +43,9 @@ void handle_command(char *argv)
 			item = strtok(NULL, " \n\t\r");
 			result = get_opc(&stack, arguments, item, count);
 			if (result == 1)
-				push_error(fd, line, stack, count);
+				push_error(fd, line, count);
 			else if (result == 2)
-				ins_error(fd, line, stack, arguments, count);
+				ins_error(fd, line, arguments, count);
 		}
 		free(line);
 		free_dlistint(stack);
