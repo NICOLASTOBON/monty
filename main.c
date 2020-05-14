@@ -42,10 +42,7 @@ void handle_command(char *argv)
 				continue;
 			}
 			else if (*arguments == '#')
-			{
-				count++;
 				continue;
-			}
 			item = strtok(NULL, " \n\t\r");
 			result = get_opc(&stack, arguments, item, count);
 			if (result == 1)
@@ -89,7 +86,6 @@ int get_opc(stack_t **stack, char *arg, char *item, int count)
 		{"mod", _mod},
 		{NULL, NULL}
 	};
-
 
 	while (op[i].opcode)
 	{
