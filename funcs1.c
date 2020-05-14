@@ -30,7 +30,9 @@ stack_t *new_Node(int n)
 void _push(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	stack_t *new = new_Node(value);
+	stack_t *new = NULL;
+
+	new = new_Node(value);
 
 	new->next = *stack;
 	if (*stack != NULL)
@@ -47,7 +49,9 @@ void _push(stack_t **stack, unsigned int line_number)
 void _pall(stack_t **stack, unsigned int n)
 {
 	(void)n;
-	stack_t *current = *stack;
+	stack_t *current = NULL;
+
+	current = *stack;
 
 	while (current != NULL)
 	{
@@ -63,7 +67,9 @@ void _pall(stack_t **stack, unsigned int n)
  */
 void free_dlistint(stack_t *stack)
 {
-	stack_t *current = stack;
+	stack_t *current = NULL;
+
+	current = stack;
 
 	if (current != NULL)
 	{
