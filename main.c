@@ -40,6 +40,11 @@ void handle_command(char *argv)
 				free(arguments);
 				continue;
 			}
+			else if (*arguments == '#')
+			{
+				count++;
+				continue;
+			}
 			item = strtok(NULL, " \n\t\r");
 			result = get_opc(&stack, arguments, item, count);
 			if (result == 1)
