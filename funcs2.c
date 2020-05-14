@@ -13,7 +13,7 @@ void _swap(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-
+		exit_program();
 		exit(EXIT_FAILURE);
 	}
 	temp = current->n;
@@ -32,6 +32,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL || stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		exit_program();
 		exit(EXIT_FAILURE);
 	}
 
@@ -55,6 +56,7 @@ void _add(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit_program();
 		exit(EXIT_FAILURE);
 	}
 	current = *stack;
@@ -76,6 +78,7 @@ void _sub(stack_t **stack, unsigned int line_number)
 	if (!current || !current->next)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit_program();
 		exit(EXIT_FAILURE);
 	}
 	sub = current->next->n - current->n;
