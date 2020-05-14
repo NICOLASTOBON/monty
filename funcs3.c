@@ -25,3 +25,24 @@ void _div(stack_t **stack, unsigned int line_number)
 	_pop(stack, line_number);
 
 }
+
+/**
+ * _mul - multiplies the second top with the top element.
+ * @stack: Stack.
+ * @line_number: Number of line
+ */
+void _mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+	int mul = 0;
+
+	if (!current || !current->next)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	mul = current->next->n * current->n;
+	current->next->n = mul;
+	_pop(stack, line_number);
+}
