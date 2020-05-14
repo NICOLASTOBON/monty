@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	exit(EXIT_SUCCESS);
+	return (0);
 }
 /**
  * handle_command - Read file
