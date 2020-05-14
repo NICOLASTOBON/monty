@@ -41,21 +41,6 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-/**
- * struct global - variables global
- * @stack: is a stack or queue
- * @fd: is a file descriptor
- * @line: is a buffer
- * Description: variables general
- */
-typedef struct global
-{
-	FILE *fd;
-	char *line;
-	stack_t *stack;
-} v_glo;
-
-v_glo command;
 
 /*Handle commands*/
 void handle_command(char *argv);
@@ -85,8 +70,7 @@ int _isdigit(char *c);
 stack_t *new_Node(int n);
 
 /* handle errors */
-void exit_program(void);
-void push_error(int count);
-void ins_error(char *count, int item);
+void push_error(FILE *fd, char *line, stack_t *stack, int count);
+void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
 
 #endif /*HOLBERTON*/

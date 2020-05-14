@@ -24,20 +24,18 @@ int main(int argc, char *argv[])
 void handle_command(char *argv)
 {
 	int count = 0, result = 0;
-
-	command.fd = NULL;
-	command.stack = NULL;
-	command.line = NULL;
+	FILE *fd;
 	size_t bufsize = 0;
-	char *arguments = NULL, *item = NULL;
+	char *line = NULL, *arguments = NULL, *item = NULL;
+	stack_t *stack = NULL;
 
-	command.fd = fopen(argv, "r");
-	if (command.fd)
+	fd = fopen(argv, "r");
+	if (fd)
 	{
-		while (getline(&command.line, &bufsize, command.fd) != -1)
+		while (getline(&line, &bufsize, fd) != -1)
 		{
 			count++;
-			arguments = strtok(command.line, " \n\t\r");
+			arguments = strtok(line, " \n\t\r");
 			if (arguments == NULL)
 			{
 				free(arguments);
@@ -46,15 +44,15 @@ void handle_command(char *argv)
 			else if (*arguments == '#')
 				continue;
 			item = strtok(NULL, " \n\t\r");
-			result = get_opc(&command.stack, arguments, item, count);
+			result = get_opc(&stack, arguments, item, count);
 			if (result == 1)
-				push_error(count);
+				push_error(fd, line, stack, count);
 			else if (result == 2)
-				ins_error(arguments, count);
+				ins_error(fd, line, stack, arguments, count);
 		}
-		free(command.line);
-		free_dlistint(command.stack);
-		fclose(command.fd);
+		free(line);
+		free_dlistint(stack);
+		fclose(fd);
 	}
 	else
 	{
