@@ -7,7 +7,7 @@
  */
 int main(int argc, char *argv[])
 {
-	if (argc >= 2 && argc <= 3)
+	if (argc == 2)
 		handle_command(argv[1]);
 	else
 	{
