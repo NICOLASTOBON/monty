@@ -38,14 +38,14 @@ void _mul(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	current = *stack;
 
 	mul = current->next->n * current->n;
-	current->next->n = mul;
 	_pop(stack, line_number);
+	current->next->n = mul;
 }
 /**
  * _mod - computes the rest of the division of the second top element
