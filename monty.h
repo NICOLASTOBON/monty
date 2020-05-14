@@ -60,7 +60,7 @@ void free_dlistint(stack_t *stack);
 int _isdigit(char *c);
 
 /* handle errors */
-void push_error(FILE *fd, char *line, int count);
-void ins_error(FILE *fd, char *line, char *count, int item);
+void push_error(FILE *fd, char *line, stack_t *stack, int count);
+void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
 
 #endif /*HOLBERTON*/
