@@ -8,7 +8,8 @@ int value;
  */
 stack_t *new_Node(int n)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new = NULL;
+	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
 	{
@@ -29,8 +30,8 @@ stack_t *new_Node(int n)
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
 	stack_t *new = NULL;
+	(void)line_number;
 
 	new = new_Node(value);
 
@@ -48,8 +49,8 @@ void _push(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int n)
 {
-	(void)n;
 	stack_t *current = NULL;
+	(void)n;
 
 	current = *stack;
 
