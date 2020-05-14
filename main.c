@@ -67,30 +67,27 @@ void handle_command(char *argv)
  */
 int get_opc(stack_t **stack, char *arg, char *item, int count)
 {
-	int i = 0, value;
+	int i = 0;
 
 	instruction_t op[] = {
+		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
 		{NULL, NULL}
 	};
 
-	if (!strcmp(arg, "push"))
-	{
-		if (_isdigit(item) == 1)
-		{
-			value = atoi(item);
-			_push(stack, value);
-			return (0);
-		}
-		else
-			return (1);
-	}
 
 	while (op[i].opcode)
 	{
 		if (!strcmp(arg, op[i].opcode))
 		{
+			if (!strcmp(arg, "push"))
+			{
+				if (_isdigit(item) == 1)
+					value = atoi(item);
+				else
+					return (1);
+			}
 			op[i].f(stack, (unsigned int)count);
 			break;
 		}

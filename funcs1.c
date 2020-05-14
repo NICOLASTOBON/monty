@@ -1,5 +1,6 @@
 #include "monty.h"
 
+int value;
 /**
  * new_Node - create new node
  * @n: is a value
@@ -24,11 +25,12 @@ stack_t *new_Node(int n)
 /**
  * _push - push item
  * @stack: is a parameter
- * @num: is value
+ * @line_number: is value
  */
-void _push(stack_t **stack, int num)
+void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = new_Node(num);
+	(void)line_number;
+	stack_t *new = new_Node(value);
 
 	new->next = *stack;
 	if (*stack != NULL)

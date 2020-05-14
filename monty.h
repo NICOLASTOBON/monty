@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include <string.h>
 
+extern int value;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -47,11 +49,10 @@ void handle_command(char *argv);
 int get_opc(stack_t **stack, char *arg, char *item, int count);
 
 /*Options funcs1.c*/
-void _push(stack_t **stack, int num);
+void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_num);
-void stack_node(stack_t **stack, stack_t *item);
-
+void _pint(stack_t **stack, unsigned int line_number);
+stack_t *new_Node(int n);
 /* Free Double linked list */
 void free_dlistint(stack_t *stack);
 
@@ -59,7 +60,6 @@ void free_dlistint(stack_t *stack);
 int _isdigit(char *c);
 
 /* handle errors */
-void handle_error(unsigned int line_number, char *op, int err);
 void push_error(FILE *fd, char *line, stack_t *stack, int count);
 void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
 
