@@ -9,8 +9,8 @@ int value;
 stack_t *new_Node(int n)
 {
 	stack_t *new = NULL;
-	new = malloc(sizeof(stack_t));
 
+	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
