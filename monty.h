@@ -52,12 +52,13 @@ int get_opc(stack_t **stack, char *arg, char *item, int count);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
-stack_t *new_Node(int n);
+void _swap(stack_t **stack, unsigned int line_number);
 /* Free Double linked list */
 void free_dlistint(stack_t *stack);
 
 /*Helpers*/
 int _isdigit(char *c);
+stack_t *new_Node(int n);
 
 /* handle errors */
 void push_error(FILE *fd, char *line, stack_t *stack, int count);
