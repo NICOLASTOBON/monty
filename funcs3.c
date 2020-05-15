@@ -12,13 +12,11 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	else if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	curerent = *stack;
@@ -41,14 +39,13 @@ void _mul(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	current = *stack;
 
 	mul = current->next->n * current->n;
-	_pop(stack, line_number);
 	current->next->n = mul;
+	_pop(stack, line_number);
 }
 /**
  * _mod - computes the rest of the division of the second top element
@@ -63,13 +60,11 @@ void _mod(stack_t **stack, unsigned int line_number)
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	else if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	curerent = *stack;
@@ -87,7 +82,6 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -98,7 +92,6 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		return;
 	}
 	fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-	cleanStack(stack);
 	exit(EXIT_FAILURE);
 }
 

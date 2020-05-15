@@ -40,21 +40,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct glob_s - global and its funcs
- * @fd: File descriptor
- * @line: Line to getline
- *
- * Description: To handle the file and getline
- */
-typedef struct glob_s
-{
-	FILE *fd;
-	char *line;
-} glob_t;
-
 /*Global variables*/
-extern glob_t global;
 extern int value;
 
 /*Handle commands*/
@@ -80,7 +66,6 @@ void _pstr(stack_t **stack, unsigned int line_number);
 
 /* Free Double linked list */
 void free_dlistint(stack_t *stack);
-void cleanStack(stack_t **stack);
 
 /*Helpers*/
 int _isdigit(char *c);
