@@ -85,6 +85,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	if (!*stack || !stack)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -92,6 +93,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	if (num < 0 || num > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	putchar(num);

@@ -1,4 +1,6 @@
 #include "monty.h"
+
+glob_t global = {NULL, NULL};
 /**
  * main - Entry point
  * @argc: Number of arguments
@@ -24,18 +26,17 @@ int main(int argc, char *argv[])
 void handle_command(char *argv)
 {
 	int count = 0, result = 0;
-	FILE *fd;
 	size_t bufsize = 0;
-	char *line = NULL, *arguments = NULL, *item = NULL;
+	char *arguments = NULL, *item = NULL;
 	stack_t *stack = NULL;
 
-	fd = fopen(argv, "r");
-	if (fd)
+	global.fd = fopen(argv, "r");
+	if (global.fd)
 	{
-		while (getline(&line, &bufsize, fd) != -1)
+		while (getline(&global.line, &bufsize, global.fd) != -1)
 		{
 			count++;
-			arguments = strtok(line, " \n\t\r");
+			arguments = strtok(global.line, " \n\t\r");
 			if (arguments == NULL)
 			{
 				free(arguments);
@@ -46,13 +47,13 @@ void handle_command(char *argv)
 			item = strtok(NULL, " \n\t\r");
 			result = get_opc(&stack, arguments, item, count);
 			if (result == 1)
-				push_error(fd, line, stack, count);
+				push_error(global.fd, global.line, stack, count);
 			else if (result == 2)
-				ins_error(fd, line, stack, arguments, count);
+				ins_error(global.fd, global.line, stack, arguments, count);
 		}
-		free(line);
+		free(global.line);
 		free_dlistint(stack);
-		fclose(fd);
+		fclose(global.fd);
 	}
 	else
 	{
